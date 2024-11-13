@@ -1,0 +1,4 @@
+selenium == 4.0.0
+webdriver-manager == 4.0.2
+streamlit == 1.40.1
+openai == 1.54.4
