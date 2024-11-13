@@ -2,8 +2,9 @@ import streamlit as st
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.by import By
+
+
+import chromedriver_autoinstaller
 from openai import OpenAI
 
 # Scraper class to get HTML content
@@ -12,13 +13,25 @@ class Scraper:
         self.url = url
 
     def get_html_content(self):
+        #chromedriver_autoinstaller.install()
+        
         chrome_options = Options()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--user-data-dir=/tmp/chrome-profile")
 
         # Configure and pass both service and options
-        driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+        #driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+
+        # Set path to ChromeDriver executable (replace 'path/to/chromedriver' with the actual path)
+        #driver_path = "/path/to/chromedriver"  # Replace with your ChromeDriver path
+        #driver = webdriver.Chrome(executable_path=driver_path, options=chrome_options)
+
+        driver = webdriver.Chrome(options=chrome_options)
+
+
+
 
         # Navigate to the URL and scrape HTML content
         driver.get(self.url)

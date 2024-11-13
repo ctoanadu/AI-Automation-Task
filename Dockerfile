@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y \
 
 # Set environment variables for Chromium
 ENV CHROME_BIN=/usr/bin/chromium
-ENV CHROME_DRIVER=/usr/lib/chromium-browser/chromedriver
+ENV CHROME_DRIVER=/usr/lib/chromium/chromedriver
 
 # Copy requirements.txt into the container
 COPY requirements.txt .
@@ -45,4 +45,5 @@ COPY . /app
 EXPOSE 8501
 
 # Command to run the Streamlit app
+
 CMD ["streamlit", "run", "app.py"]
